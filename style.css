@@ -19,7 +19,10 @@ body {
     background-color: var(--bg-color);
     color: var(--text-color);
     line-height: 1.6;
+    overflow-x: hidden;
 }
+
+img { max-width: 100%; display: block; }
 
 .container {
     max-width: 1200px;
@@ -74,6 +77,14 @@ body {
     font-size: 1.5rem;
     font-weight: 800;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+}
+
+.nav__logo-img {
+    height: 48px;
+    width: auto;
+    display: block;
 }
 
 .logo__blue { color: var(--primary); }
@@ -94,6 +105,51 @@ body {
 }
 
 .nav__link:hover, .active-link { color: var(--primary); }
+
+.nav__btns {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.nav__toggle {
+    display: none;
+    width: 28px;
+    height: 22px;
+    position: relative;
+    cursor: pointer;
+}
+
+.nav__toggle .toggle__icon,
+.nav__toggle .toggle__icon::before,
+.nav__toggle .toggle__icon::after {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary);
+    border-radius: 2px;
+    transition: transform 0.3s, top 0.3s, background-color 0.3s;
+}
+
+.nav__toggle .toggle__icon {
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.nav__toggle .toggle__icon::before {
+    content: '';
+    top: -9px;
+}
+
+.nav__toggle .toggle__icon::after {
+    content: '';
+    top: 9px;
+}
+
+.nav__toggle.is-open .toggle__icon { background: transparent; }
+.nav__toggle.is-open .toggle__icon::before { top: 0; transform: rotate(45deg); }
+.nav__toggle.is-open .toggle__icon::after { top: 0; transform: rotate(-45deg); }
 
 /* Banner Slider */
 .slider {
@@ -177,20 +233,34 @@ body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.2);
-    border: none;
-    color: white;
-    padding: 15px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: var(--white);
+    padding: 0;
     cursor: pointer;
     border-radius: 50%;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1;
     z-index: 20;
-    transition: background 0.3s;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    transition: background 0.3s, transform 0.3s, border-color 0.3s;
 }
 
-.slider__btn:hover { background: rgba(255, 255, 255, 0.4); }
-.slider__btn--prev { left: 30px; }
-.slider__btn--next { right: 30px; }
+.slider__btn:hover {
+    background: var(--secondary);
+    border-color: var(--secondary);
+    transform: translateY(-50%) scale(1.08);
+}
+
+.slider__btn:active { transform: translateY(-50%) scale(0.96); }
+.slider__btn--prev { left: 24px; }
+.slider__btn--next { right: 24px; }
 
 .slider__dots {
     position: absolute;
@@ -296,6 +366,13 @@ body {
 
 .tracking__result.active { display: block; }
 
+.tracking__result iframe {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    border: none;
+}
+
 .tracking__spinner {
     border: 3px solid rgba(255,255,255,0.3);
     border-top: 3px solid var(--secondary);
@@ -356,7 +433,8 @@ body {
     gap: 10px;
 }
 
-.why__img { width: 100%; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+.why__img-container { display: flex; justify-content: center; }
+.why__img { width: 100%; max-width: 560px; height: auto; border-radius: 20px; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
 /* Testimonials */
 .testimonials__container { grid-template-columns: 1fr 1fr; }
@@ -418,13 +496,155 @@ body {
 }
 
 /* Responsive */
+
+/* Tablet & smaller (<= 968px) */
 @media screen and (max-width: 968px) {
-    .nav__menu { display: none; } /* Simplified for demo, add mobile menu later */
-    .hero__container, .why__container, .services__container, .testimonials__container, .footer__container {
+    .section { padding: 60px 0; }
+    .section__title { font-size: 2rem; margin-bottom: 32px; }
+
+    /* Sections that flip to single column on tablet */
+    .hero__container, .why__container, .testimonials__container {
         grid-template-columns: 1fr;
     }
+
+    /* Keep multi-column where it still reads well on tablet */
+    .services__container { grid-template-columns: repeat(2, 1fr); }
+    .footer__container { grid-template-columns: repeat(2, 1fr); }
+
+    /* Hero */
+    .hero { min-height: auto; padding: 60px 0; }
     .hero__title { font-size: 2.5rem; }
     .hero__container { text-align: center; }
-    .hero__description { margin: 0 auto 40px; }
+    .hero__description { margin: 0 auto 32px; }
     .hero__btns { justify-content: center; }
+
+    /* Why section — image stacks below text and centers */
+    .why__data { order: 1; }
+    .why__img-container { order: 2; }
+    .section__title.text-left { text-align: center; }
+    .why__list { display: inline-block; text-align: left; }
+
+    /* Tracking glass box gets a touch less padding */
+    .glass { padding: 32px; }
+    .tracking__result { width: auto; }
+
+    /* Mobile nav: hamburger + slide-down menu */
+    .nav__toggle { display: block; }
+
+    .nav__menu {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        right: 0;
+        background-color: var(--white);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        padding: 20px;
+        transform: translateY(-150%);
+        transition: transform 0.35s ease;
+        z-index: 999;
+    }
+
+    .nav__menu.show-menu { transform: translateY(0); }
+
+    .nav__list {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .nav__item { border-bottom: 1px solid #f0f0f0; }
+    .nav__item:last-child { border-bottom: none; }
+
+    .nav__link {
+        display: block;
+        padding: 14px 8px;
+        font-size: 1.05rem;
+    }
+
+    .header:not(.scrolled) .nav__toggle .toggle__icon,
+    .header:not(.scrolled) .nav__toggle .toggle__icon::before,
+    .header:not(.scrolled) .nav__toggle .toggle__icon::after {
+        background-color: var(--white);
+    }
+
+    .header:not(.scrolled) .nav__toggle.is-open .toggle__icon { background: transparent; }
+}
+
+/* Phone (<= 640px) */
+@media screen and (max-width: 640px) {
+    .container { padding: 0 16px; }
+    .section { padding: 50px 0; }
+    .section__title { font-size: 1.75rem; margin-bottom: 28px; }
+
+    /* Header */
+    .nav { height: 70px; }
+    .nav__menu { top: 70px; }
+    .nav__btns { gap: 10px; }
+    .nav__btns .btn { padding: 10px 16px; font-size: 0.85rem; }
+    .nav__logo-img { height: 38px; }
+
+    /* Slider */
+    .slider { height: 280px; margin-top: 70px; }
+    .slide__title { font-size: 1.9rem; }
+    .slide__subtitle { font-size: 0.95rem; padding: 0 16px; }
+    .slider__btn { width: 38px; height: 38px; font-size: 0.95rem; }
+    .slider__btn--prev { left: 10px; }
+    .slider__btn--next { right: 10px; }
+
+    /* Hero */
+    .hero { min-height: auto; padding: 50px 0; }
+    .hero__title { font-size: 2rem; }
+    .hero__description { font-size: 1rem; margin-bottom: 28px; }
+    .hero__btns {
+        flex-direction: column;
+        gap: 12px;
+        align-items: stretch;
+    }
+    .hero__btns .btn { width: 100%; padding: 14px 20px; text-align: center; }
+
+    /* Tracking box */
+    .glass { padding: 24px 20px; border-radius: 16px; }
+    .tracking__title { font-size: 1.25rem; margin-bottom: 16px; }
+    .tracking__form {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .tracking__input { width: 100%; padding: 13px 15px; font-size: 0.95rem; }
+    .tracking__form .btn { width: 100%; padding: 13px 20px; text-align: center; }
+
+    /* Collapse remaining multi-column sections */
+    .services__container { grid-template-columns: 1fr; }
+    .footer__container { grid-template-columns: 1fr; gap: 28px; }
+
+    /* Cards */
+    .card { padding: 28px 22px; }
+
+    /* Why list */
+    .why__item { font-size: 1rem; }
+
+    /* Footer */
+    .footer { padding: 50px 0 20px; }
+    .footer__copy { margin-top: 32px; }
+
+    /* WhatsApp button — smaller and out of the way */
+    .whatsapp-btn {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+    .whatsapp-btn svg { width: 26px; height: 26px; }
+}
+
+/* Small phones (<= 380px) — avoid overlap and overflow on iPhone SE / Galaxy A0x */
+@media screen and (max-width: 380px) {
+    .nav__logo-img { height: 32px; }
+    .nav__btns .btn { padding: 9px 12px; font-size: 0.8rem; }
+    .nav__btns { gap: 8px; }
+    .slide__title { font-size: 1.5rem; }
+    .slide__subtitle { font-size: 0.85rem; }
+    .hero__title { font-size: 1.75rem; }
+    .section__title { font-size: 1.5rem; }
+    .glass { padding: 20px 16px; }
+    .card { padding: 22px 18px; }
 }

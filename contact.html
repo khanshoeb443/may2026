@@ -9,12 +9,12 @@
     <style>
         .contact__container { grid-template-columns: 1fr 1fr; align-items: start; }
         .contact__form { display: grid; gap: 20px; }
-        .contact__input { 
-            width: 100%; 
-            padding: 15px; 
-            border: 2px solid #eee; 
-            border-radius: 8px; 
-            outline: none; 
+        .contact__input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            outline: none;
             transition: border 0.3s;
         }
         .contact__input:focus { border-color: var(--primary); }
@@ -22,15 +22,22 @@
         .contact__info-box { padding-top: 20px; }
         .contact__info-item { margin-bottom: 30px; display: flex; gap: 20px; align-items: center; }
         .contact__info-icon { font-size: 1.5rem; background: var(--accent-bg); padding: 15px; border-radius: 50%; }
-        .map__placeholder { 
-            height: 400px; 
-            background: #eee; 
-            border-radius: 20px; 
-            display: flex; 
-            align-items: center; 
-            justify-content: center; 
+        .map__placeholder {
+            height: 400px;
+            background: #eee;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: #999;
             margin-top: 40px;
+        }
+        @media screen and (max-width: 968px) {
+            .contact__container { grid-template-columns: 1fr; gap: 28px; }
+        }
+        @media screen and (max-width: 640px) {
+            .contact__info-item { gap: 14px; margin-bottom: 22px; }
+            .contact__info-icon { padding: 12px; font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -38,14 +45,22 @@
     <header class="header scrolled" id="header">
         <nav class="nav container">
             <a href="index.html" class="nav__logo">
-                <!-- <span class="logo__blue">AVANTI</span> <span class="logo__orange">PARCEL</span> -->
-                <img src="logo.jpeg" style="height: 60px; width: 140px;" alt="">
+                <img src="logo1.png" alt="Avanti Parcel Services" class="nav__logo-img">
             </a>
-            <a href="index.html#track" class="btn btn--secondary">Track Now</a>
-            <ul class="nav__list">
-                <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-                <li class="nav__item"><a href="contact.html" class="nav__link active-link">Contact</a></li>
-            </ul>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link active-link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__btns">
+                <a href="index.html#track" class="btn btn--secondary">Track Now</a>
+                <div class="nav__toggle" id="nav-toggle">
+                    <span class="toggle__icon"></span>
+                </div>
+            </div>
         </nav>
     </header>
 

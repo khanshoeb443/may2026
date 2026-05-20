@@ -19,6 +19,8 @@ const scrollActive = () => {
             sectionId = current.getAttribute('id'),
             sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
 
+        if (!sectionsClass) return
+
         if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
             sectionsClass.classList.add('active-link')
         } else {
@@ -35,6 +37,15 @@ const navToggle = document.getElementById('nav-toggle'),
 if (navToggle) {
     navToggle.addEventListener('click', () => {
         navMenu.classList.toggle('show-menu')
+        navToggle.classList.toggle('is-open')
+    })
+
+    // Close menu when a nav link is tapped
+    navMenu.querySelectorAll('.nav__link').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('show-menu')
+            navToggle.classList.remove('is-open')
+        })
     })
 }
 
