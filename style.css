@@ -15,6 +15,8 @@
     font-family: 'Inter', sans-serif;
 }
 
+html { scroll-padding-top: 80px; }
+
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -519,7 +521,7 @@ img { max-width: 100%; display: block; }
     .hero__btns { justify-content: center; }
 
     /* Why section — image stacks below text and centers */
-    .why__data { order: 1; }
+    .why__data { order: 1; text-align: center; }
     .why__img-container { order: 2; }
     .section__title.text-left { text-align: center; }
     .why__list { display: inline-block; text-align: left; }
@@ -561,13 +563,6 @@ img { max-width: 100%; display: block; }
         font-size: 1.05rem;
     }
 
-    .header:not(.scrolled) .nav__toggle .toggle__icon,
-    .header:not(.scrolled) .nav__toggle .toggle__icon::before,
-    .header:not(.scrolled) .nav__toggle .toggle__icon::after {
-        background-color: var(--white);
-    }
-
-    .header:not(.scrolled) .nav__toggle.is-open .toggle__icon { background: transparent; }
 }
 
 /* Phone (<= 640px) */
