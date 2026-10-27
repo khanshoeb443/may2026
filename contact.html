@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Avanti Parcel Services</title>
+    <title>Contact Us | Avanti Services</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
@@ -23,8 +23,10 @@
         .contact__status.is-success { color: #1a8754; }
         .contact__status.is-error { color: #c0392b; }
         .contact__info-box { padding-top: 20px; }
+        .contact.section { padding-top: 130px; }
         .contact__info-item { margin-bottom: 30px; display: flex; gap: 20px; align-items: center; }
-        .contact__info-icon { font-size: 1.5rem; background: var(--accent-bg); padding: 15px; border-radius: 50%; }
+        .contact__info-item p { overflow-wrap: anywhere; }
+        .contact__info-icon { font-size: 1.5rem; background: var(--accent-bg); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; border-radius: 50%; flex-shrink: 0; line-height: 1; }
         .map__placeholder {
             height: 400px;
             background: #eee;
@@ -39,8 +41,9 @@
             .contact__container { grid-template-columns: 1fr; gap: 28px; }
         }
         @media screen and (max-width: 640px) {
+            .contact.section { padding-top: 100px; }
             .contact__info-item { gap: 14px; margin-bottom: 22px; }
-            .contact__info-icon { padding: 12px; font-size: 1.2rem; }
+            .contact__info-icon { width: 44px; height: 44px; font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -48,7 +51,7 @@
     <header class="header scrolled" id="header">
         <nav class="nav container">
             <a href="index.html" class="nav__logo">
-                <img src="logo1.png" alt="Avanti Parcel Services" class="nav__logo-img">
+                <img src="logo1.png" alt="Avanti Services" class="nav__logo-img">
             </a>
 
             <div class="nav__menu" id="nav-menu">
@@ -72,12 +75,12 @@
     <main class="main">
         <section class="contact section container">
             <h2 class="section__title">Contact Us</h2>
-            <p class="contact__intro">For cargo quotations, transportation arrangements and logistics service enquiries, please contact Avanti Parcel Services.</p>
+            <p class="contact__intro">For cargo quotations, transportation arrangements and logistics service enquiries, please contact Avanti Services.</p>
             <div class="contact__container grid glass">
                 <form action="https://api.web3forms.com/submit" method="POST" class="contact__form" id="contactForm">
                     <input type="hidden" name="access_key" value="484e9048-7fbb-46eb-ae33-d09d7f78f5ba">
-                    <input type="hidden" name="subject" value="New Contact Form Submission - Avanti Parcel">
-                    <input type="hidden" name="from_name" value="Avanti Parcel Website">
+                    <input type="hidden" name="subject" value="New Contact Form Submission - Avanti Services">
+                    <input type="hidden" name="from_name" value="Avanti Services Website">
                     <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
                     <input type="text" name="name" placeholder="Full Name" class="contact__input" required>
                     <input type="email" name="email" placeholder="Email Address" class="contact__input" required>
@@ -123,7 +126,7 @@
                 <h3 class="service__title">Business Information</h3>
                 <dl class="business__list">
                     <dt>Business Name</dt>
-                    <dd>Avanti Parcel Services</dd>
+                    <dd>Avanti Services</dd>
                     <dt>Business Constitution</dt>
                     <dd>Sole Proprietorship</dd>
                     <dt>Nature of Business</dt>
@@ -138,11 +141,11 @@
     </main>
 
     <footer class="footer">
-        <p class="footer__copy">&#169; 2026 Avanti Parcel Services. All rights reserved.</p>
+        <p class="footer__copy">&#169; 2026 Avanti Services. All rights reserved.</p>
     </footer>
 
     <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/+917378866655?text=Hello!%20I%20have%20an%20inquiry%20regarding%20Avanti%20Parcel%20Services." target="_blank" class="whatsapp-btn" aria-label="Chat on WhatsApp">
+    <a href="https://wa.me/+917378866655?text=Hello!%20I%20have%20an%20inquiry%20regarding%20Avanti%20Services." target="_blank" class="whatsapp-btn" aria-label="Chat on WhatsApp">
         <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
     </a>
 
