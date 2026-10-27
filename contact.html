@@ -54,6 +54,8 @@
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
                     <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="index.html#about" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="index.html#services" class="nav__link">Services</a></li>
                     <li class="nav__item"><a href="contact.html" class="nav__link active-link">Contact</a></li>
                 </ul>
             </div>
@@ -69,7 +71,8 @@
 
     <main class="main">
         <section class="contact section container">
-            <h2 class="section__title">Get In Touch</h2>
+            <h2 class="section__title">Contact Us</h2>
+            <p class="contact__intro">For cargo quotations, transportation arrangements and logistics service enquiries, please contact Avanti Parcel Services.</p>
             <div class="contact__container grid glass">
                 <form action="https://api.web3forms.com/submit" method="POST" class="contact__form" id="contactForm">
                     <input type="hidden" name="access_key" value="484e9048-7fbb-46eb-ae33-d09d7f78f5ba">
@@ -86,9 +89,16 @@
 
                 <div class="contact__info-box">
                     <div class="contact__info-item">
+                        <div class="contact__info-icon">👤</div>
+                        <div>
+                            <h3>Contact Person</h3>
+                            <p>Sarang Sabnis</p>
+                        </div>
+                    </div>
+                    <div class="contact__info-item">
                         <div class="contact__info-icon">📍</div>
                         <div>
-                            <h3>Our Logistics Plaza</h3>
+                            <h3>Office Address</h3>
                             <p>Shop Number 1/2/3 Hiwale Niwas Opp Dakshin Mukhi Hanuman Mandir Ajab nagar Nutan Colony, Chh. Sambhaji Nagar (Aurangabad) Maharashtra, 431001.</p>
                         </div>
                     </div>
@@ -96,22 +106,34 @@
                         <div class="contact__info-icon">📞</div>
                         <div>
                             <h3>Phone Support</h3>
-                            <p>+91 7378866655</p>
+                            <p><a href="tel:+917588534789" class="contact__link">+91 7588534789</a></p>
                         </div>
                     </div>
                     <div class="contact__info-item">
                         <div class="contact__info-icon">📧</div>
                         <div>
                             <h3>Email Inquiry</h3>
-                            <p>sabnis.sarang@gmail.com</p>
+                            <p><a href="mailto:sabnis.sarang@gmail.com" class="contact__link">sabnis.sarang@gmail.com</a></p>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- <div class="map__placeholder">
-                <p>Google Maps Embed Area - [40.7128° N, 74.0060° W]</p>
-            </div> -->
+            <div class="business__info card">
+                <h3 class="service__title">Business Information</h3>
+                <dl class="business__list">
+                    <dt>Business Name</dt>
+                    <dd>Avanti Parcel Services</dd>
+                    <dt>Business Constitution</dt>
+                    <dd>Sole Proprietorship</dd>
+                    <dt>Nature of Business</dt>
+                    <dd>Logistics, Cargo Transportation, FTL Transportation Arrangements and International Air Freight Forwarding</dd>
+                    <dt>Operating Focus</dt>
+                    <dd>Maharashtra, with domestic and international shipment arrangements as required.</dd>
+                    <dt>GSTIN</dt>
+                    <dd>27ATLPS8747C1Z5</dd>
+                </dl>
+            </div>
         </section>
     </main>
 
@@ -165,7 +187,7 @@
                         statusEl.classList.add('is-success');
                         form.reset();
                     } else {
-                        statusEl.textContent = json.message || 'Something went wrong. Please try again or call +91 7378866655.';
+                        statusEl.textContent = json.message || 'Something went wrong. Please try again or call +91 7588534789.';
                         statusEl.classList.add('is-error');
                     }
                 } catch (err) {
